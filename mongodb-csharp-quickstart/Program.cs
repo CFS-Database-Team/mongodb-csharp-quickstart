@@ -8,8 +8,10 @@ namespace mongodb_csharp_quickstart
     {
         static void Main(string[] args)
         {
-            Starting();
-            CreatingDocument();
+            // Starting();
+            // CreatingDocument();
+
+            ReadOperations();
         }
 
         static void Starting()
@@ -47,6 +49,17 @@ namespace mongodb_csharp_quickstart
 
             // If you need to do that insert asynchronously, the MongoDB C# driver is fully async compatible. The same operation could be done with:
             // await collection.InsertOneAsync(document);
+        }
+
+        static void ReadOperations()
+        {
+            MongoClient dbClient = new MongoClient("mongodb+srv://bounty:UfQaM1vvL33LKw7x@cluster-c5s-001.lxwl3.mongodb.net/sample_mflix?retryWrites=true&w=majority");
+
+            var database = dbClient.GetDatabase("sample_training");
+            var collection = database.GetCollection<BsonDocument>("grades");
+
+            var firstDocument = collection.Find(new BsonDocument()).FirstOrDefault();
+            Console.WriteLine(firstDocument.ToString());
         }
     }
 }

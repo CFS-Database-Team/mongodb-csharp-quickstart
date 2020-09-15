@@ -20,3 +20,4 @@ C:\Users\bount\Documents\CFS\GitHub\Database\mongodb-csharp-quickstart\mongodb-c
 C:\Users\bount\Documents\CFS\GitHub\Database\mongodb-csharp-quickstart\mongodb-csharp-quickstart\obj\Debug\netcoreapp3.1\mongodb-csharp-quickstart.dll
 C:\Users\bount\Documents\CFS\GitHub\Database\mongodb-csharp-quickstart\mongodb-csharp-quickstart\obj\Debug\netcoreapp3.1\mongodb-csharp-quickstart.pdb
 C:\Users\bount\Documents\CFS\GitHub\Database\mongodb-csharp-quickstart\mongodb-csharp-quickstart\obj\Debug\netcoreapp3.1\mongodb-csharp-quickstart.genruntimeconfig.cache
+C:\Users\bount\Documents\CFS\GitHub\Database\mongodb-csharp-quickstart\mongodb-csharp-quickstart\obj\Debug\netcoreapp3.1\mongodb-csharp-quickstart.csprojAssemblyReference.cache
