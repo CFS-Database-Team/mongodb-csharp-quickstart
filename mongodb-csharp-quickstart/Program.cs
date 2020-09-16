@@ -9,16 +9,20 @@ namespace mongodb_csharp_quickstart
     {
         static void Main(string[] args)
         {
-            // Starting();
+            Starting();
+
             // CreatingDocument();
+
             // ReadOperations();
 
-            UpdatingData();
+            // UpdatingData();
+
+            // DeletingData();
         }
 
         static void Starting()
         {
-            MongoClient dbClient = new MongoClient("mongodb+srv://bounty:UfQaM1vvL33LKw7x@cluster-c5s-001.lxwl3.mongodb.net/sample_mflix?retryWrites=true&w=majority");
+            MongoClient dbClient = new MongoClient("mongodb+srv://bounty:******@cluster-c5s-001.lxwl3.mongodb.net/sample_training?retryWrites=true&w=majority");
 
             var dbList = dbClient.ListDatabases().ToList();
 
@@ -27,11 +31,13 @@ namespace mongodb_csharp_quickstart
             {
                 Console.WriteLine(db);
             }
+
+            Console.WriteLine("Staring Ops sucessfully ! ");
         }
 
         static void CreatingDocument()
         {
-            MongoClient dbClient = new MongoClient("mongodb+srv://bounty:UfQaM1vvL33LKw7x@cluster-c5s-001.lxwl3.mongodb.net/sample_mflix?retryWrites=true&w=majority");
+            MongoClient dbClient = new MongoClient("mongodb+srv://bounty:******@cluster-c5s-001.lxwl3.mongodb.net/sample_training?retryWrites=true&w=majority");
 
             var database = dbClient.GetDatabase("sample_training");
             var collection = database.GetCollection<BsonDocument>("grades");
@@ -51,11 +57,13 @@ namespace mongodb_csharp_quickstart
 
             // If you need to do that insert asynchronously, the MongoDB C# driver is fully async compatible. The same operation could be done with:
             // await collection.InsertOneAsync(document);
+
+            Console.WriteLine("Creating Ops sucessfully ! ");
         }
 
         static void ReadOperations()
         {
-            MongoClient dbClient = new MongoClient("mongodb+srv://bounty:UfQaM1vvL33LKw7x@cluster-c5s-001.lxwl3.mongodb.net/sample_mflix?retryWrites=true&w=majority");
+            MongoClient dbClient = new MongoClient("mongodb+srv://bounty:UfQaM1vvL33LKw7x@cluster-c5s-001.lxwl3.mongodb.net/sample_training?retryWrites=true&w=majority");
 
             var database = dbClient.GetDatabase("sample_training");
             var collection = database.GetCollection<BsonDocument>("grades");
@@ -90,11 +98,13 @@ namespace mongodb_csharp_quickstart
 
             // asynchronously 
             // await collection.Find(highExamScoreFilter).ForEachAsync(document => Console.WriteLine(document));
+
+            Console.WriteLine("Reading Ops sucessfully ! ");
         }
 
         static void UpdatingData()
         {
-            MongoClient dbClient = new MongoClient("mongodb+srv://bounty:UfQaM1vvL33LKw7x@cluster-c5s-001.lxwl3.mongodb.net/sample_mflix?retryWrites=true&w=majority");
+            MongoClient dbClient = new MongoClient("mongodb+srv://bounty:******@cluster-c5s-001.lxwl3.mongodb.net/sample_training?retryWrites=true&w=majority");
 
             var database = dbClient.GetDatabase("sample_training");
             var collection = database.GetCollection<BsonDocument>("grades");
@@ -103,6 +113,22 @@ namespace mongodb_csharp_quickstart
             var update = Builders<BsonDocument>.Update.Set("class_id", 483);
 
             collection.UpdateOne(filter, update);
+
+            Console.WriteLine("Updating Ops sucessfully ! ");
+        }
+
+        static void DeletingData()
+        {
+            MongoClient mongoClient = new MongoClient("mongodb+srv://bounty:******@cluster-c5s-001.lxwl3.mongodb.net/sample_training?retryWrites=true&w=majority");
+            
+            var database = mongoClient.GetDatabase("sample_training");
+            var collection = database.GetCollection<BsonDocument>("grades");
+
+            var deleteFilter = Builders<BsonDocument>.Filter.Eq("student_id", 10000);
+
+            collection.DeleteOne(deleteFilter);
+
+            Console.WriteLine("Deleting Ops sucessfully ! ");
         }
     }
 }
